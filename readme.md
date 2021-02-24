@@ -1,1 +1,1 @@
-Task dan demo bisa menyusul
+Task dan demo bisa menyusul setiap bootcamp selesai
