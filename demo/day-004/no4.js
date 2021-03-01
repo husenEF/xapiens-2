@@ -9,6 +9,11 @@ const data = async () =>
     .catch((eer) => eer);
 
 async function main() {
+  const listHarga = [100, 1300, 1500, 1400];
+
+  const total = listHarga.reduce((prev, current) => {
+    return prev + current;
+  }, 0);
   const d = await data();
   //   console.log({ d });
   const liveJakarta = d.filter((e) => e.addresses[0].city === "DKI Jakarta");
@@ -37,6 +42,7 @@ async function main() {
     allJakarta,
     arrowfunction: arrowfunction(),
     arrowfunctionWithReturn: arrowfunctionWithReturn(),
+    total,
   });
 }
 
