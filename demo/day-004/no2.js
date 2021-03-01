@@ -17,7 +17,7 @@ const main = async () => {
     return e;
   });
 
-  console.log({ post });
+  console.log({ newPost });
 };
 
 main();
