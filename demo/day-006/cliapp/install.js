@@ -3,6 +3,10 @@
 const { program } = require("@caporal/core");
 
 program
+  .command("add")
+  .argument()
+  .action()
+  
   .command("install", "Install Program")
   .alias("i")
   .argument("<lib>", "library nane")
