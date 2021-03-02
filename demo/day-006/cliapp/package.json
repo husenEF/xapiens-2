@@ -1,0 +1,20 @@
+{
+  "name": "mycliapps",
+  "version": "1.0.0",
+  "description": "aplikasi untuk cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@caporal/core": "^2.0.2"
+  },
+  "bin": {
+    "mycliapps": "./install.js"
+  }
+}
