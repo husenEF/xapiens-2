@@ -33,5 +33,6 @@ menggunakan `JSX` di react native.
     ```
 
 2. buatkan element untuk setiap render yang sifatnya berulang, contoh: text
-3. contoh tampilan |
-![Screenshot-from-2021-03-04-13-26-30.png](https://i.postimg.cc/J4LQSB3N/Screenshot-from-2021-03-04-13-26-30.png)
+3. contoh tampilan
+
+    ![Screenshot-from-2021-03-04-13-26-30.png](https://i.postimg.cc/J4LQSB3N/Screenshot-from-2021-03-04-13-26-30.png)
