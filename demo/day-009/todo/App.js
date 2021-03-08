@@ -26,12 +26,21 @@ const RenderList = ({color, data, onDoing}) => {
   );
 };
 
+const Tab3 = (props) => {
+  return (
+    <View>
+      <Text>Tab 3 </Text>
+      <Button title="set tab 1" onPress={() => props.onPress()} />
+    </View>
+  );
+};
+
 class App extends Component {
-  
   state = {
     todos: [],
     addTodo: false,
     todo: '',
+    currentTab: 0,
   };
 
   saveTodo() {
@@ -55,13 +64,30 @@ class App extends Component {
     this.setState({todos: updateTodo});
   }
 
+  openTab(e) {
+    this.setState({currentTab: e});
+  }
+
+  rendeTab() {
+    const {currentTab} = this.state;
+    switch (currentTab) {
+      case 3:
+        return <Tab3 onPress={() => this.openTab(1)} />;
+      case 2:
+        return <Text>Tab 2</Text>;
+      case 1:
+      default:
+        return <Text>Tab 1</Text>;
+    }
+  }
+
   render() {
     const {todos} = this.state;
     const unDone = todos.filter((e) => !e.status);
     const done = todos.filter((e) => e.status);
     console.log({
       unDone,
-      done
+      done,
     });
 
     return (
@@ -91,6 +117,22 @@ class App extends Component {
             <Button title="Save todo" onPress={() => this.saveTodo()} />
           </View>
         )}
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignContent: 'space-between',
+          }}>
+          {[1, 2, 3].map((e) => (
+            <Button
+              title={`tab ${e}`}
+              onPress={() => this.openTab(e)}
+              key={e}
+            />
+          ))}
+        </View>
+
+        {this.rendeTab()}
       </View>
     );
   }
