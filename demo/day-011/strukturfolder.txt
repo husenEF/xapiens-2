@@ -1,0 +1,54 @@
+-src
+---screen
+---route
+---component
+-----header
+-----footer
+-----list
+-------item
+---service
+------todo
+------user
+------serviceB
+
+
+── Dockerfile
+├── package.json
+├── package-lock.json
+├── pages
+│   ├── _app.js
+│   ├── _document.js
+│   ├── home.js
+│   ├── index.js
+│   └── items
+│       └── index.js
+├── public
+│   └── favicon.ico
+└── src
+    ├── common
+    │   ├── kendo-edit.component.js
+    │   └── modal-edit.component.js
+    ├── component
+    │   └── items
+    │       └── ModalAddItem.component.js
+    ├── config
+    │   ├── apollo.js
+    │   ├── config.js
+    │   └── graphql
+    │       ├── home.js
+    │       ├── index.js
+    │       ├── Mutation
+    │       │   ├── index.js
+    │       │   └── master-item.js
+    │       └── Queries
+    │           └── items.js
+    ├── lib
+    │   └── toggle-filter.js
+    ├── services
+    │   └── axios
+    │       └── httpCommon.js
+    ├── styles
+    │   ├── index.css
+    │   └── main.css
+    └── utils
+        └── config.js
