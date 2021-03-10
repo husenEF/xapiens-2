@@ -74,7 +74,10 @@ class App extends Component {
         <SnackBarComponent
           isOpen={showAlert}
           message="Email belum Pas"
-          action={() => this.setState({showAlert: false})}
+          action={(text) => {
+            console.log('from snackbar action', text);
+            this.setState({showAlert: false});
+          }}
         />
       </View>
     );

@@ -7,12 +7,17 @@ import {
   Touchable,
   Dimensions,
 } from 'react-native';
-const SnackBar = ({message, isOpen, action}) => {
+const SnackBar = (props) => {
+  const {message, isOpen, action} = props;
+  console.log({props});
+  
   if (!isOpen) return null;
   return (
     <View style={Style.constainer}>
       <Text style={Style.text}>{message}</Text>
-      <TouchableOpacity style={Style.btn} onPress={action}>
+      <TouchableOpacity
+        style={Style.btn}
+        onPress={() => action('halo from Snackbar')}>
         <Text>CLose</Text>
       </TouchableOpacity>
     </View>
