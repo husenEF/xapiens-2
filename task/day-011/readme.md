@@ -1,4 +1,4 @@
-# Task Day 10
+# Task Day 11
 
 - silahkan buat aplikasi sederhana `register`, `login` dan `profile` dengan design dari [Figma](https://www.figma.com/file/Dvcml2W1qUSmPvh249DEhj/task-10?node-id=0%3A1)
 - silahkan **lengkapi halaman** dengan mengacu pada design, yaitu halaman:
