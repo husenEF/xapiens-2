@@ -11,7 +11,7 @@ const App = () => {
     <View>
       <Text>React Hook </Text>
       {/* <Counter /> */}
-      {/* <FunctionRef /> */}
+      <FunctionRef />
       <Text>use lib count: {counter}</Text>
       <Button title="+" onPress={increment} />
       <Button title="-" onPress={decrement} />
