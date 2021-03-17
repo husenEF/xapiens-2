@@ -5,6 +5,7 @@ const CounterContext = createContext();
 class CounterProvider extends PureComponent {
   state = {
     number: 0,
+    idUser: 3,
   };
 
   inc() {
@@ -16,10 +17,11 @@ class CounterProvider extends PureComponent {
   }
   render() {
     const {children} = this.props;
-    const {number} = this.state;
+    const {number, idUser} = this.state;
 
     const data = {
       number,
+      idUser,
       increment: () => this.inc(),
       decrement: () => this.dec(),
     };

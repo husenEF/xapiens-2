@@ -1,8 +1,9 @@
 import React, {createContext, useState} from 'react';
 import {View, Text} from 'react-native';
 
-import {HomeScreen, ActionScreen} from '@screens';
+import {HomeScreen, ActionScreen, ListPostScreen} from '@screens';
 import CounterProvider from '@contexts/counter';
+import PostProvider from '@contexts/post';
 //1. inisialisasi context
 // const CounterContext = createContext();
 
@@ -23,8 +24,11 @@ const App = () => {
     <View>
       <Text>Main App</Text>
       <CounterProvider>
-        <HomeScreen />
-        <ActionScreen />
+        <PostProvider>
+          <HomeScreen />
+          <ActionScreen />
+          <ListPostScreen />
+        </PostProvider>
       </CounterProvider>
     </View>
   );
