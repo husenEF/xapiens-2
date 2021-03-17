@@ -1,12 +1,12 @@
-# Task Day 014
+# Task Day 016
 
-* update task day 13, rubah untuk perpindahan screennya menggunakan React Navigation
-* untuk akses ke secreen lain, bisa di buatkan tombol di screen awal atau menggunakan btn action
- buat satu screen untuk menampilkan data dari Jsonplaceholder, kemudian buatkan halaman detailnya
-untuk screen detail post, title di header bisa berubah menyesuaikan title postnya
-Terimakasih
-
-* update task day 13 dan update perpindahan screen dengan `React Navigation`
-* buat screen untuk daftar `Post` dan `detail` Post.
-    * update title di screen detail post sesuai title post di headernya
-    * get data dari [JsonPlaceholder](https://jsonplaceholder.typicode.com/posts)
+* create simple apps dengan design [Figma](https://www.figma.com/file/Dvcml2W1qUSmPvh249DEhj/task-10?node-id=0%3A1) atau refrensi design lainnya
+* buat sistem login sederhana untuk mengakses screen yang perlu login, dan gunakan sistem `expired` untuk loginnya
+* data :
+    * user : [User JsonPlaceholder](https://jsonplaceholder.typicode.com/users)
+    * post : [Post JsonPlaceholder](https://jsonplaceholder.typicode.com/posts)
+* buat halaman:
+    * Home => berisi detail user daftar list
+    * My Article => berisi daftar artikel yang di buat user sedang login
+    * Detail Article => berisi detail article 
+* gunakan `Rect Context` untuk manage state
