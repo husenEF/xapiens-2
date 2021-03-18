@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, {createContext, useContext, useState} from 'react';
 
+import {getPost} from '@services/post';
+
 export const PostContext = createContext();
 
 const PostProvider = ({children}) => {
@@ -8,15 +10,23 @@ const PostProvider = ({children}) => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const getPost = async () => {
+  const getPostData = async () => {
     setIsLoading(true);
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => setData(response.data))
-      .catch(error => setErrorMessage(error))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    const raw = await getPost();
+    console.log({raw});
+    if (raw.length > 0) {
+      setData(raw);
+    } else {
+      setData([]);
+    }
+    setIsLoading(false);
+    // axios
+    //   .get('https://jsonplaceholder.typicode.com/posts')
+    //   .then(response => setData(response.data))
+    //   .catch(error => setErrorMessage(error))
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
   };
 
   const sendComment = () => {};
@@ -27,7 +37,7 @@ const PostProvider = ({children}) => {
       isLoading,
       error: errorMessage,
     },
-    getPost,
+    getPost: getPostData,
     sendComment,
   };
 

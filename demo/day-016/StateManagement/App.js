@@ -1,84 +1,49 @@
 import React, {Component, createContext, useContext, useState} from 'react';
 import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {HomeScreen, ActionScreen, ListPostScreen} from '@screens';
+import {
+  HomeScreen,
+  ActionScreen,
+  ListPostScreen,
+  UserScreen,
+  LoginScreen,
+} from '@screens';
 import CounterProvider from '@contexts/counter';
 import PostProvider from '@contexts/post';
+import UserProvider, {useUser} from './src/context/user';
 
-// 1. inisialisasi context
-const GrretingContenxt = createContext();
-
-const DisplayName = () => {
-  const value = useContext(GrretingContenxt);
-  return (
-    <View>
-      <Text>{value.text || 'Halo'}</Text>
-    </View>
-  );
-};
-
-class MyName extends Component {
-  renderGreeting(text) {
-    return `${text} Husen`;
-  }
-
-  renderCart() {
-    return (
-      <GrretingContenxt.Consumer>
-        {value => <Text>{value.text} husen</Text>}
-      </GrretingContenxt.Consumer>
-    );
-  }
-
-  renderProfile() {
-    return (
-      <UserContext.Consumer>
-        {value => <Text>halo {value.name}</Text>}
-      </UserContext.Consumer>
-    );
-  }
-
-  render() {
-    return (
-      <View>
-        {this.renderCart()}
-        <Text>halo</Text>
-      </View>
-    );
-  }
-}
+const Stack = createStackNavigator();
 
 const App = () => {
-  // const [counter, setCounter] = useState(10);
-  // const up = () => setCounter(counter + 1);
-  // const down = () => setCounter(counter - 1);
-
-  // const data = {
-  //   counter,
-  //   up,
-  //   down,
-  // };
-
-  const changeToId = () => {
-    return 'ID';
-  };
-
+  const {
+    data: {isLogin},
+  } = useUser();
+  // console.log({UserData});
   return (
-    <View>
-      <Text>Main App</Text>
-      <CounterProvider>
-        <PostProvider>
-          <HomeScreen />
-          <ActionScreen />
-          <ListPostScreen />
-        </PostProvider>
-      </CounterProvider>
-      <GrretingContenxt.Provider value={{text: "Assalamu'alaikum", changeToId}}>
-        <DisplayName />
-        <MyName />
-      </GrretingContenxt.Provider>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {isLogin ? (
+          <>
+            <Stack.Screen name="User" component={UserScreen} />
+            <Stack.Screen name="Post" component={ListPostScreen} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-export default App;
+const MasterApp = props => (
+  <UserProvider>
+    <App {...props} />
+  </UserProvider>
+);
+
+export default MasterApp;
