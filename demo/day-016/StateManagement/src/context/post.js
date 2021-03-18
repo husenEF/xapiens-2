@@ -19,6 +19,8 @@ const PostProvider = ({children}) => {
       });
   };
 
+  const sendComment = () => {};
+
   const value = {
     data: {
       data,
@@ -26,7 +28,9 @@ const PostProvider = ({children}) => {
       error: errorMessage,
     },
     getPost,
+    sendComment,
   };
+
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };
 export const PostConsumer = () => useContext(PostContext);

@@ -15,6 +15,7 @@ class CounterProvider extends PureComponent {
   dec() {
     this.setState({number: this.state.number - 1});
   }
+
   render() {
     const {children} = this.props;
     const {number, idUser} = this.state;
@@ -31,7 +32,12 @@ class CounterProvider extends PureComponent {
   }
 }
 
-const CounterConsumer = () => useContext(CounterContext);
+const CounterConsumer = () => {
+  const value = useContext(CounterContext);
+  return value;
+};
+
+//const dataCounter = CounterConsumer();
 
 export {CounterContext, CounterConsumer};
 export default CounterProvider;

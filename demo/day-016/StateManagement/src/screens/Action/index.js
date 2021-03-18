@@ -9,8 +9,10 @@ import {
 
 import {CounterConsumer} from '@contexts/counter';
 import {PostConsumer} from '@contexts/post';
+import { CounterContext } from '../../context/counter';
 
 const Action = () => {
+ 
   const {increment, decrement} = CounterConsumer();
   const {
     getPost,
