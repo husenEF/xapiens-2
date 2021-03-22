@@ -9,7 +9,20 @@ const ADD_USER = gql`
   }
 `;
 
+const GET_TASK_BY_USER = gql`
+  query($userId: Int!) {
+    task(where: {userId: {_eq: $userId}}) {
+      userId
+      name
+      status
+      User {
+        username: name
+      }
+    }
+  }
+`;
 
 export default {
   add: ADD_USER,
+  taskById: GET_TASK_BY_USER,
 };

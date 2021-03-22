@@ -88,10 +88,22 @@ const Home = () => {
 const User = () => {
   const [user, setUser] = useState();
   // console.log({a: USERS.add});
+  const {data: taksData, error: errorTask, loading: loadingTask} = useQuery(
+    USERS.taskById,
+    {
+      variables: {
+        userId: 1,
+      },
+    },
+  );
   const [addNewUser, {data, loading, error}] = useMutation(USERS.add);
   useEffect(() => {
     console.log({data, loading, error});
   }, [data, loading, error]);
+
+  useEffect(() => {
+    console.log({taksData, loadingTask});
+  }, [taksData, loadingTask]);
   return (
     <View>
       <Text>User Page</Text>
