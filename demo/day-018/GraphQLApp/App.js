@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {useQuery} from '@apollo/client';
+import React, {useEffect, useState} from 'react';
+import {Button, FlatList, Text, TextInput, View} from 'react-native';
+import {useMutation, useQuery} from '@apollo/client';
 
 // //1. embed library
 // import {
@@ -58,8 +58,9 @@ import {useQuery} from '@apollo/client';
 
 // export default App;
 
-import {GraphProvider} from './src/config/apollo';
+import {GraphProvider, LocalProvider} from './src/config/apollo';
 import {QUERY_RATES} from './src/config/graphql/Query/rates';
+import USERS from './src/config/graphql/Mutation/users';
 
 const Home = () => {
   const {loading, data, error} = useQuery(QUERY_RATES);
@@ -83,17 +84,74 @@ const Home = () => {
     </View>
   );
 };
+
+const User = () => {
+  const [user, setUser] = useState();
+  // console.log({a: USERS.add});
+  const [addNewUser, {data, loading, error}] = useMutation(USERS.add);
+  useEffect(() => {
+    console.log({data, loading, error});
+  }, [data, loading, error]);
+  return (
+    <View>
+      <Text>User Page</Text>
+      <TextInput
+        value={user}
+        onChangeText={text => {
+          setUser(text);
+        }}
+      />
+      <Button
+        title={'Save new User'}
+        onPress={() => {
+          addNewUser({
+            variables: {
+              name: user,
+            },
+          });
+        }}
+      />
+    </View>
+  );
+};
 const App = () => {
+  const [page, setPage] = useState('home');
+
   useEffect(() => {
     // callRates();
   }, []);
+
+  const renderPage = p => {
+    switch (p) {
+      case 'user':
+        setPage('home');
+        break;
+      case 'home':
+      default:
+        setPage('user');
+        break;
+    }
+  };
+  const name = () => (page !== 'home' ? 'Home' : 'User');
   return (
-    <GraphProvider>
-      <View>
-        <Text>Graph Apps</Text>
-        <Home />
-      </View>
-    </GraphProvider>
+    <View>
+      <Text>Graph Apps</Text>
+      <Button
+        title={`Switch ${name()}`}
+        onPress={() => {
+          renderPage(page);
+        }}
+      />
+      {page === 'home' ? (
+        <GraphProvider>
+          <Home />
+        </GraphProvider>
+      ) : (
+        <LocalProvider>
+          <User />
+        </LocalProvider>
+      )}
+    </View>
   );
 };
 

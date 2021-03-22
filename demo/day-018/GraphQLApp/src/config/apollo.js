@@ -8,5 +8,13 @@ const client = new ApolloClient({
 const GraphProvider = ({children}) => (
   <ApolloProvider client={client}>{children}</ApolloProvider>
 );
-export {GraphProvider};
+
+const LocalClient = new ApolloClient({
+  uri: 'http://192.168.0.115:8090/v1/graphql',
+  cache: new InMemoryCache(),
+});
+const LocalProvider = ({children}) => {
+  return <ApolloProvider client={LocalClient}>{children}</ApolloProvider>;
+};
+export {GraphProvider, LocalProvider, LocalClient};
 export default client;
