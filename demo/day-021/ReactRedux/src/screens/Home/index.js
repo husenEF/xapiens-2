@@ -10,7 +10,7 @@ const Home = () => {
       name: state.global.name,
     };
   });
-  console.log({count});
+  // console.log({count});
   return (
     <View
       style={{
