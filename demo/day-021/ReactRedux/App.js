@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 // import {combineReducers, createStore} from 'redux';
 
 import {HomeScreen, PostScreen, FooterScreen} from './src/screens';
@@ -51,17 +52,19 @@ import {HomeScreen, PostScreen, FooterScreen} from './src/screens';
 //   user: userReducer,
 // });
 // const store = createStore(mainReducer);
-import store from './src/redux/store';
+import {store, persistor} from './src/redux';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Text>Aapp</Text>
-        <HomeScreen />
-        <PostScreen />
-        <FooterScreen />
-      </View>
+      <PersistGate loading={false} persistor={persistor}>
+        <View>
+          <Text>Aapp</Text>
+          <HomeScreen />
+          <PostScreen />
+          <FooterScreen />
+        </View>
+      </PersistGate>
     </Provider>
   );
 };
